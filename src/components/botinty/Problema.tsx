@@ -60,44 +60,9 @@ export function Problema() {
               Con Bot Inty
             </span>
 
-            <div className="relative mt-6 h-40" aria-hidden="true">
-              <svg viewBox="0 0 320 160" className="h-full w-full">
-                <defs>
-                  <linearGradient id="pr-line" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0%" stopColor="#A855F7" />
-                    <stop offset="100%" stopColor="#22D3EE" />
-                  </linearGradient>
-                </defs>
-                {[20, 60, 100, 140].map((y, i) => (
-                  <path
-                    key={y}
-                    d={`M8 ${y} C 110 ${y}, 120 80, 160 80`}
-                    fill="none"
-                    stroke="url(#pr-line)"
-                    strokeWidth="1.2"
-                    strokeDasharray="5 7"
-                    style={{ animation: `dash-flow ${6 + i}s linear infinite` }}
-                  />
-                ))}
-                {[20, 60, 100, 140].map((y, i) => (
-                  <path
-                    key={`r-${y}`}
-                    d={`M160 80 C 200 80, 210 ${y}, 312 ${y}`}
-                    fill="none"
-                    stroke="url(#pr-line)"
-                    strokeWidth="1.2"
-                    strokeDasharray="5 7"
-                    opacity="0.7"
-                    style={{ animation: `dash-flow ${7 + i}s linear infinite reverse` }}
-                  />
-                ))}
-                <circle cx="160" cy="80" r="24" fill="url(#pr-line)" opacity="0.25" />
-                <circle cx="160" cy="80" r="14" fill="url(#pr-line)" />
-                <text x="160" y="84" textAnchor="middle" fontSize="9" fill="#070816" fontWeight="700">
-                  BI
-                </text>
-              </svg>
-            </div>
+            <div className="mt-6" />
+
+
 
             <ul className="mt-2 space-y-2.5">
               {problema.despues.map((p) => (
