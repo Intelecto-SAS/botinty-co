@@ -1,16 +1,8 @@
-import { useEffect, useState } from "react";
-import { X } from "lucide-react";
 import { historiaExito } from "@/content/site";
 import { Reveal, SectionHeading } from "./primitives";
 
 export function HistoriaExito() {
-  const [abierto, setAbierto] = useState(false);
 
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setAbierto(false);
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, []);
 
   return (
     <section className="px-4 py-20 sm:px-6 lg:py-28">
