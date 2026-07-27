@@ -1,21 +1,47 @@
+import { formulario } from "@/content/site";
+import { cn } from "@/lib/utils";
+import { Check, Loader2 } from "lucide-react";
 import { useState } from "react";
 import { z } from "zod";
-import { Check, Loader2 } from "lucide-react";
-import { formulario } from "@/content/site";
 import { Reveal, SectionHeading } from "./primitives";
-import { cn } from "@/lib/utils";
 
 /**
  * Formulario comercial.
- * PENDIENTE DE CONEXIÓN: `enviarSolicitud` está preparado para integrarse con
- * correo, Power Automate, Dynamics 365, una función serverless o un servicio de
- * formularios. No incluir claves ni endpoints privados en el frontend: la
- * conexión debe hacerse desde el servidor.
+ * Conectado a Web3Forms para envío de leads comerciales.
  */
+const WEB3FORMS_ACCESS_KEY =
+  import.meta.env.VITE_WEB3FORMS_ACCESS_KEY ?? "92691c56-97cf-4334-b043-b2f009218c48";
+
 async function enviarSolicitud(datos: Datos): Promise<void> {
-  // Reemplazar por la llamada real (server function / endpoint interno).
-  await new Promise((r) => setTimeout(r, 1200));
-  if (import.meta.env.DEV) console.info("Solicitud de demo (simulada):", datos.correo);
+  const formData = new FormData();
+  formData.append("access_key", WEB3FORMS_ACCESS_KEY);
+  formData.append("subject", "Nueva solicitud de demo - Bot Inty");
+  formData.append("from_name", "Sitio web Bot Inty");
+  formData.append("name", `${datos.nombre} ${datos.apellido}`.trim());
+  formData.append("email", datos.correo);
+  formData.append("phone", datos.telefono);
+  formData.append("company", datos.empresa);
+  formData.append("cargo", datos.cargo);
+  formData.append("area", datos.area);
+  formData.append("empleados", datos.empleados);
+  formData.append(
+    "message",
+    [
+      `Proceso a automatizar: ${datos.proceso}`,
+      `Mensaje adicional: ${datos.mensaje || "Sin mensaje adicional"}`,
+      `Autorizacion de datos: ${datos.autorizacion ? "Si" : "No"}`,
+    ].join("\n"),
+  );
+
+  const response = await fetch("https://api.web3forms.com/submit", {
+    method: "POST",
+    body: formData,
+  });
+
+  const payload = (await response.json()) as { success?: boolean; message?: string };
+  if (!response.ok || !payload.success) {
+    throw new Error(payload.message || "No se pudo enviar el formulario");
+  }
 }
 
 const esquema = z.object({
@@ -115,6 +141,7 @@ export function Formulario() {
     setEstado("enviando");
     try {
       await enviarSolicitud(parsed.data);
+      e.currentTarget.reset();
       setEstado("ok");
     } catch {
       setEstado("error");

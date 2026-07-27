@@ -1,6 +1,6 @@
 import { funcionalidades } from "@/content/site";
-import { Reveal, SectionHeading, TiltCard } from "./primitives";
 import { cn } from "@/lib/utils";
+import { Reveal, SectionHeading, TiltCard } from "./primitives";
 
 export function Funcionalidades() {
   return (
@@ -30,42 +30,6 @@ export function Funcionalidades() {
                   del colaborador y orquesta las acciones sobre las fuentes autorizadas de tu
                   empresa.
                 </p>
-              </div>
-              <div className="relative mx-auto aspect-square w-full max-w-[18rem]" aria-hidden="true">
-                <div className="animate-pulse-core absolute inset-[22%] rounded-full bg-[image:var(--gradient-brand)] blur-xl" />
-                <svg viewBox="0 0 200 200" className="relative h-full w-full">
-                  <defs>
-                    <linearGradient id="fn-line" x1="0" y1="0" x2="1" y2="1">
-                      <stop offset="0%" stopColor="#A855F7" />
-                      <stop offset="100%" stopColor="#22D3EE" />
-                    </linearGradient>
-                  </defs>
-                  {Array.from({ length: 8 }).map((_, i) => {
-                    const a = (i / 8) * Math.PI * 2;
-                    return (
-                      <g key={i}>
-                        <line
-                          x1="100"
-                          y1="100"
-                          x2={100 + Math.cos(a) * 80}
-                          y2={100 + Math.sin(a) * 80}
-                          stroke="url(#fn-line)"
-                          strokeWidth="0.9"
-                          strokeDasharray="4 6"
-                          style={{ animation: `dash-flow ${6 + i}s linear infinite` }}
-                        />
-                        <circle
-                          cx={100 + Math.cos(a) * 80}
-                          cy={100 + Math.sin(a) * 80}
-                          r="4"
-                          fill="url(#fn-line)"
-                        />
-                      </g>
-                    );
-                  })}
-                  <circle cx="100" cy="100" r="26" fill="url(#fn-line)" opacity="0.3" />
-                  <circle cx="100" cy="100" r="16" fill="url(#fn-line)" />
-                </svg>
               </div>
             </div>
           </Reveal>
