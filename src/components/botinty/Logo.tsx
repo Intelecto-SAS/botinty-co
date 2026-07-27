@@ -1,10 +1,11 @@
+import logoSrc from "@/assets/bot-inty-logo.png";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 
 /** Marca oficial Bot Inty by Intelecto. */
 export function Logo({ className }: { className?: string }) {
-  const primarySrc = "/assets/bot-inty-logo.png";
-  const fallbackSrc = "/assets/bot-inty-logo.png";
+  const primarySrc = logoSrc;
+  const fallbackSrc = logoSrc;
   const [src, setSrc] = useState(primarySrc);
   const [showTextFallback, setShowTextFallback] = useState(false);
 
