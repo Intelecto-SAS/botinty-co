@@ -1,23 +1,21 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { Background } from "@/components/botinty/Background";
-import { Navbar } from "@/components/botinty/Navbar";
-import { Hero } from "@/components/botinty/Hero";
-import { Clientes } from "@/components/botinty/Clientes";
-import { Problema } from "@/components/botinty/Problema";
-import { DemoInteractiva } from "@/components/botinty/DemoInteractiva";
-import { Funcionalidades } from "@/components/botinty/Funcionalidades";
-import { ComoFunciona } from "@/components/botinty/ComoFunciona";
-import { CasosDeUso } from "@/components/botinty/CasosDeUso";
 import { Beneficios } from "@/components/botinty/Beneficios";
-import { Integraciones } from "@/components/botinty/Integraciones";
-import { Seguridad } from "@/components/botinty/Seguridad";
-import { HistoriaExito } from "@/components/botinty/HistoriaExito";
-import { Faq } from "@/components/botinty/Faq";
+import { CasosDeUso } from "@/components/botinty/CasosDeUso";
+import { ComoFunciona } from "@/components/botinty/ComoFunciona";
 import { CtaFinal } from "@/components/botinty/CtaFinal";
-import { Formulario } from "@/components/botinty/Formulario";
-import { Footer } from "@/components/botinty/Footer";
+import { DemoInteractiva } from "@/components/botinty/DemoInteractiva";
+import { Faq } from "@/components/botinty/Faq";
 import { FloatingCta } from "@/components/botinty/FloatingCta";
+import { Footer } from "@/components/botinty/Footer";
+import { Formulario } from "@/components/botinty/Formulario";
+import { Funcionalidades } from "@/components/botinty/Funcionalidades";
+import { Hero } from "@/components/botinty/Hero";
+import { Integraciones } from "@/components/botinty/Integraciones";
+import { Navbar } from "@/components/botinty/Navbar";
+import { Problema } from "@/components/botinty/Problema";
+import { Seguridad } from "@/components/botinty/Seguridad";
 import { faq } from "@/content/site";
 
 const TITULO = "Bot Inty | Inteligencia artificial para tus procesos internos";
@@ -81,7 +79,6 @@ function Index() {
       <Navbar />
       <main>
         <Hero />
-        <Clientes />
         <Problema />
         <DemoInteractiva />
         <Funcionalidades />
@@ -90,7 +87,6 @@ function Index() {
         <Beneficios />
         <Integraciones />
         <Seguridad />
-        <HistoriaExito />
         <Faq />
         <CtaFinal />
         <Formulario />

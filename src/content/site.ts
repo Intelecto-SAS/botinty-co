@@ -100,19 +100,6 @@ export const conversacionHero: Conversacion[] = [
   },
 ];
 
-export const clientes = {
-  titulo: "Empresas que están transformando su atención interna con Bot Inty",
-  // Marcadores editables: reemplazar `nombre` y, cuando exista, agregar `logo`.
-  logos: [
-    { nombre: "Eficacia" },
-    { nombre: "Logo cliente 2" },
-    { nombre: "Logo cliente 3" },
-    { nombre: "Logo cliente 4" },
-    { nombre: "Logo cliente 5" },
-    { nombre: "Logo cliente 6" },
-  ],
-};
-
 export const problema = {
   titulo: "Tus colaboradores no deberían perder tiempo buscando respuestas.",
   antes: [
@@ -457,25 +444,6 @@ export const seguridad = {
     { titulo: "Integraciones seguras", texto: "Las conexiones se habilitan bajo los mecanismos que autorice la empresa." },
     { titulo: "Control editorial", texto: "La organización decide qué documentos y respuestas puede entregar Bot Inty." },
   ],
-};
-
-export const historiaExito = {
-  titulo: "Cuando cada segundo cuenta, una conversación puede cambiarlo todo.",
-  cliente: "Eficacia",
-  logo: null as string | null,
-  situacion:
-    "Un alto volumen de solicitudes internas repetitivas llegaba por correo y llamadas, saturando a los equipos de talento humano y servicio al empleado.",
-  solucion:
-    "Se implementó Bot Inty como canal conversacional de autoservicio para consultas frecuentes, entrega de documentos y radicación de solicitudes internas.",
-  resultados: [
-    { valor: "4.000+", label: "Usuarios activos", porValidar: true },
-    { valor: "6.000+", label: "Casos al mes", porValidar: true },
-    { valor: "Menor", label: "Tiempo de atención", porValidar: true },
-  ],
-  frase:
-    "Los colaboradores encontraron un solo lugar para resolver sus solicitudes, y los equipos internos recuperaron tiempo para tareas de mayor valor.",
-  casoCompleto:
-    "Antes de Bot Inty, las solicitudes internas de Eficacia se distribuían entre correos, llamadas y formularios, lo que dificultaba el seguimiento y generaba reprocesos en los equipos de atención. La implementación se realizó por etapas: primero las consultas más frecuentes de talento humano y nómina, luego la entrega de documentos y finalmente la radicación y el seguimiento de casos internos. Hoy los colaboradores resuelven en una conversación lo que antes exigía varios canales, y la organización cuenta con visibilidad sobre los temas más consultados para seguir mejorando sus procesos. Las cifras presentadas corresponden a la información publicada por el cliente y deben validarse antes de cada publicación.",
 };
 
 export const faq = [
