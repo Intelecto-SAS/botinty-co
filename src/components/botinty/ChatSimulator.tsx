@@ -156,9 +156,6 @@ export function ChatSimulator({
       if (interval) clearInterval(interval);
       timers.forEach(clearTimeout);
     };
-
-
-    return cleanup;
   }, [step, key, reduce, loop, mensajes]);
 
   useEffect(() => {
