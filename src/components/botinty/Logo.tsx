@@ -1,15 +1,39 @@
-import { cn } from "@/lib/utils";
 import logo from "@/assets/bot-inty-logo.png.asset.json";
+import { cn } from "@/lib/utils";
+import { useMemo, useState } from "react";
 
 /** Marca oficial Bot Inty by Intelecto. */
 export function Logo({ className }: { className?: string }) {
+  const primarySrc = logo.url;
+  const fallbackSrc = useMemo(() => `https://cdn.lovable.dev/${logo.r2_key}`, []);
+  const [src, setSrc] = useState(primarySrc);
+  const [showTextFallback, setShowTextFallback] = useState(false);
+
+  if (showTextFallback) {
+    return (
+      <span
+        aria-label="Bot Inty by Intelecto"
+        className={cn("inline-flex shrink-0 items-center font-semibold", className)}
+      >
+        Bot Inty
+      </span>
+    );
+  }
+
   return (
     <img
-      src={logo.url}
+      src={src}
       alt="Bot Inty by Intelecto"
       className={cn("w-auto shrink-0 object-contain", className)}
       loading="eager"
       decoding="async"
+      onError={() => {
+        if (src !== fallbackSrc) {
+          setSrc(fallbackSrc);
+          return;
+        }
+        setShowTextFallback(true);
+      }}
     />
   );
 }
