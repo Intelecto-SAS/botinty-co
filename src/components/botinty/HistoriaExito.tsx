@@ -69,49 +69,10 @@ export function HistoriaExito() {
             <blockquote className="mt-8 border-l-2 border-[oklch(0.63_0.23_304)] pl-4 text-base leading-relaxed italic sm:text-lg">
               “{historiaExito.frase}”
             </blockquote>
-
-
-
           </article>
         </Reveal>
       </div>
 
-      {abierto ? (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-label={`Caso completo de ${historiaExito.cliente}`}
-          className="fixed inset-0 z-[60] grid place-items-center bg-[oklch(0.08_0.03_279_/_85%)] p-4 backdrop-blur-sm"
-          onClick={() => setAbierto(false)}
-        >
-          <div
-            className="glass max-h-[80vh] w-full max-w-2xl overflow-y-auto rounded-3xl p-6 sm:p-8"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-start justify-between gap-4">
-              <h3 className="text-xl font-bold">{historiaExito.cliente}</h3>
-              <button
-                type="button"
-                onClick={() => setAbierto(false)}
-                aria-label="Cerrar"
-                className="glass grid h-9 w-9 shrink-0 place-items-center rounded-xl"
-              >
-                <X className="h-4 w-4" />
-              </button>
-            </div>
-            <p className="text-muted-foreground mt-4 text-sm leading-relaxed">
-              {historiaExito.casoCompleto}
-            </p>
-            <a
-              href="#demo"
-              onClick={() => setAbierto(false)}
-              className="text-primary-foreground mt-6 inline-flex rounded-xl bg-[image:var(--gradient-brand)] px-5 py-3 text-sm font-semibold"
-            >
-              Solicitar una demo
-            </a>
-          </div>
-        </div>
-      ) : null}
     </section>
   );
 }
