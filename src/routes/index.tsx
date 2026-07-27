@@ -10,7 +10,6 @@ import { Funcionalidades } from "@/components/botinty/Funcionalidades";
 import { ComoFunciona } from "@/components/botinty/ComoFunciona";
 import { CasosDeUso } from "@/components/botinty/CasosDeUso";
 import { Beneficios } from "@/components/botinty/Beneficios";
-import { AntesDespues } from "@/components/botinty/AntesDespues";
 import { Integraciones } from "@/components/botinty/Integraciones";
 import { Seguridad } from "@/components/botinty/Seguridad";
 import { HistoriaExito } from "@/components/botinty/HistoriaExito";
@@ -89,7 +88,6 @@ function Index() {
         <ComoFunciona />
         <CasosDeUso />
         <Beneficios />
-        <AntesDespues />
         <Integraciones />
         <Seguridad />
         <HistoriaExito />
