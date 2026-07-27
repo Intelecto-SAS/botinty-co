@@ -12,7 +12,16 @@ import { Reveal, SectionHeading } from "./primitives";
 const WEB3FORMS_ACCESS_KEY =
   import.meta.env.VITE_WEB3FORMS_ACCESS_KEY ?? "92691c56-97cf-4334-b043-b2f009218c48";
 
+type Web3FormsResponse = {
+  success?: boolean;
+  message?: string;
+};
+
 async function enviarSolicitud(datos: Datos): Promise<void> {
+  if (!WEB3FORMS_ACCESS_KEY) {
+    throw new Error("No se configuró la clave de envío del formulario.");
+  }
+
   const formData = new FormData();
   formData.append("access_key", WEB3FORMS_ACCESS_KEY);
   formData.append("subject", "Nueva solicitud de demo - Bot Inty");
@@ -33,14 +42,29 @@ async function enviarSolicitud(datos: Datos): Promise<void> {
     ].join("\n"),
   );
 
-  const response = await fetch("https://api.web3forms.com/submit", {
-    method: "POST",
-    body: formData,
-  });
+  let response: Response;
+  try {
+    response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
+  } catch {
+    throw new Error("No fue posible conectar con el servicio de formularios.");
+  }
 
-  const payload = (await response.json()) as { success?: boolean; message?: string };
-  if (!response.ok || !payload.success) {
-    throw new Error(payload.message || "No se pudo enviar el formulario");
+  let payload: Web3FormsResponse = {};
+  try {
+    payload = (await response.json()) as Web3FormsResponse;
+  } catch {
+    payload = {};
+  }
+
+  if (!response.ok) {
+    throw new Error(payload.message || "El servicio rechazó la solicitud. Intenta nuevamente.");
+  }
+
+  if (!payload.success) {
+    throw new Error(payload.message || "No se pudo enviar el formulario.");
   }
 }
 
@@ -106,6 +130,7 @@ function Campo({
 export function Formulario() {
   const [errores, setErrores] = useState<Errores>({});
   const [estado, setEstado] = useState<"idle" | "enviando" | "ok" | "error">("idle");
+  const [mensajeError, setMensajeError] = useState<string | null>(null);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -134,16 +159,22 @@ export function Formulario() {
         if (!next[key]) next[key] = issue.message;
       }
       setErrores(next);
+      setEstado("idle");
+      setMensajeError(null);
       return;
     }
 
     setErrores({});
+    setMensajeError(null);
     setEstado("enviando");
     try {
       await enviarSolicitud(parsed.data);
       e.currentTarget.reset();
+      setMensajeError(null);
       setEstado("ok");
-    } catch {
+    } catch (error) {
+      const texto = error instanceof Error ? error.message : "No se pudo enviar el formulario.";
+      setMensajeError(texto);
       setEstado("error");
     }
   }
@@ -171,7 +202,11 @@ export function Formulario() {
               </p>
               <button
                 type="button"
-                onClick={() => setEstado("idle")}
+                onClick={() => {
+                  setErrores({});
+                  setMensajeError(null);
+                  setEstado("idle");
+                }}
                 className="glass mt-2 rounded-xl px-5 py-2.5 text-sm font-semibold"
               >
                 Enviar otra solicitud
@@ -266,7 +301,7 @@ export function Formulario() {
 
               {estado === "error" ? (
                 <p role="alert" className="text-destructive sm:col-span-2 text-sm">
-                  No pudimos enviar tu solicitud. Intenta nuevamente en unos minutos.
+                  {mensajeError ?? "No pudimos enviar tu solicitud. Intenta nuevamente en unos minutos."}
                 </p>
               ) : null}
 
