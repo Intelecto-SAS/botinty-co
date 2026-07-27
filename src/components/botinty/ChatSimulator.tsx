@@ -116,49 +116,47 @@ export function ChatSimulator({
     if (!actual) return;
 
     let cancel = false;
+    let interval: ReturnType<typeof setInterval> | undefined;
     const timers: ReturnType<typeof setTimeout>[] = [];
 
-    if (actual.buscando) {
-      timers.push(
-        setTimeout(() => {
-          if (cancel) return;
-          avanzar();
-        }, 1400),
-      );
-      return cleanup;
-    }
-
-    let i = 0;
-    const speed = actual.autor === "empleado" ? 34 : 18;
-    const interval = setInterval(() => {
+    const avanzar = () => {
       if (cancel) return;
-      i += 1;
-      setTyped(actual.texto.slice(0, i));
-      if (i >= actual.texto.length) {
-        clearInterval(interval);
-        timers.push(setTimeout(avanzar, actual.adjunto ? 2200 : 1100));
-      }
-    }, speed);
-
-    function avanzar() {
       if (step < mensajes.length - 1) {
         setStep((s) => s + 1);
         setTyped("");
       } else if (loop) {
         timers.push(
           setTimeout(() => {
+            if (cancel) return;
             setStep(0);
             setTyped("");
           }, 3200),
         );
       }
+    };
+
+    if (actual.buscando) {
+      timers.push(setTimeout(avanzar, 1400));
+    } else {
+      let i = 0;
+      const speed = actual.autor === "empleado" ? 34 : 18;
+      interval = setInterval(() => {
+        if (cancel) return;
+        i += 1;
+        setTyped(actual.texto.slice(0, i));
+        if (i >= actual.texto.length) {
+          if (interval) clearInterval(interval);
+          timers.push(setTimeout(avanzar, actual.adjunto ? 2200 : 1100));
+        }
+      }, speed);
     }
 
-    function cleanup() {
+    return () => {
       cancel = true;
-      clearInterval(interval);
+      if (interval) clearInterval(interval);
       timers.forEach(clearTimeout);
-    }
+    };
+
 
     return cleanup;
   }, [step, key, reduce, loop, mensajes]);
