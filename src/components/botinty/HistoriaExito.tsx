@@ -70,13 +70,8 @@ export function HistoriaExito() {
               “{historiaExito.frase}”
             </blockquote>
 
-            <button
-              type="button"
-              onClick={() => setAbierto(true)}
-              className="glass hover:bg-accent/30 mt-8 inline-flex rounded-xl px-5 py-3 text-sm font-semibold transition-colors"
-            >
-              Leer el caso completo
-            </button>
+
+
           </article>
         </Reveal>
       </div>
