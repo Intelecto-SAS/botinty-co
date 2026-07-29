@@ -7,7 +7,7 @@ export function Footer() {
   return (
     <footer className="border-t border-[oklch(0.35_0.06_280_/_35%)] px-4 py-14 sm:px-6">
       <div className="mx-auto max-w-6xl">
-        <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div className="grid gap-10 lg:grid-cols-[1.5fr_1fr_1fr]">
           <div>
             <Logo className="h-8" />
             <p className="text-muted-foreground mt-4 max-w-xs text-sm leading-relaxed">
@@ -44,19 +44,6 @@ export function Footer() {
               </li>
               <li>{contacto.telefono}</li>
               <li>{contacto.ciudad}</li>
-            </ul>
-            <ul className="mt-4 flex gap-2">
-              {contacto.redes.map((r) => (
-                <li key={r.label}>
-                  <a
-                    href={r.href}
-                    aria-label={r.label}
-                    className="glass hover:text-cyan grid h-9 w-9 place-items-center rounded-xl text-[11px] font-semibold transition-colors"
-                  >
-                    {r.label.slice(0, 2)}
-                  </a>
-                </li>
-              ))}
             </ul>
           </div>
         </div>
