@@ -10,12 +10,21 @@ import { Reveal, SectionHeading } from "./primitives";
  * Conectado a Web3Forms para envío de leads comerciales.
  */
 const WEB3FORMS_ACCESS_KEY =
-  import.meta.env.VITE_WEB3FORMS_ACCESS_KEY ?? "92691c56-97cf-4334-b043-b2f009218c48";
+  import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
 
 type Web3FormsResponse = {
   success?: boolean;
   message?: string;
 };
+
+const MENSAJE_ERROR_ENVIO = "No pudimos enviar tu solicitud. Intenta nuevamente en unos minutos.";
+
+function extraerMensaje(error: unknown): string {
+  if (error instanceof Error && error.message.trim().length > 0) {
+    return error.message;
+  }
+  return MENSAJE_ERROR_ENVIO;
+}
 
 async function enviarSolicitud(datos: Datos): Promise<void> {
   if (!WEB3FORMS_ACCESS_KEY) {
@@ -60,6 +69,9 @@ async function enviarSolicitud(datos: Datos): Promise<void> {
   }
 
   if (!response.ok) {
+    if (response.status === 429) {
+      throw new Error("Has realizado demasiados intentos. Espera un momento e inténtalo de nuevo.");
+    }
     throw new Error(payload.message || "El servicio rechazó la solicitud. Intenta nuevamente.");
   }
 
@@ -132,6 +144,28 @@ export function Formulario() {
   const [estado, setEstado] = useState<"idle" | "enviando" | "ok" | "error">("idle");
   const [mensajeError, setMensajeError] = useState<string | null>(null);
 
+  function onCampoEditado(e: React.FormEvent<HTMLFormElement>) {
+    const target = e.target;
+    if (!(target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement || target instanceof HTMLSelectElement)) {
+      return;
+    }
+
+    const key = target.name as keyof Datos;
+    if (!key) return;
+
+    setErrores((prev) => {
+      if (!prev[key]) return prev;
+      const next = { ...prev };
+      delete next[key];
+      return next;
+    });
+
+    if (estado === "error") {
+      setEstado("idle");
+      setMensajeError(null);
+    }
+  }
+
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (estado === "enviando") return; // protección contra envíos repetidos
@@ -170,10 +204,11 @@ export function Formulario() {
     try {
       await enviarSolicitud(parsed.data);
       e.currentTarget.reset();
+      setErrores({});
       setMensajeError(null);
       setEstado("ok");
     } catch (error) {
-      const texto = error instanceof Error ? error.message : "No se pudo enviar el formulario.";
+      const texto = extraerMensaje(error);
       setMensajeError(texto);
       setEstado("error");
     }
@@ -213,7 +248,7 @@ export function Formulario() {
               </button>
             </div>
           ) : (
-            <form onSubmit={onSubmit} noValidate className="grid gap-4 sm:grid-cols-2">
+            <form onSubmit={onSubmit} onInput={onCampoEditado} noValidate className="grid gap-4 sm:grid-cols-2">
               <Campo id="nombre" label="Nombre" error={errores.nombre}>
                 <input id="nombre" name="nombre" className={inputCls} autoComplete="given-name" placeholder="María" />
               </Campo>
@@ -301,7 +336,7 @@ export function Formulario() {
 
               {estado === "error" ? (
                 <p role="alert" className="text-destructive sm:col-span-2 text-sm">
-                  {mensajeError ?? "No pudimos enviar tu solicitud. Intenta nuevamente en unos minutos."}
+                  {mensajeError ?? MENSAJE_ERROR_ENVIO}
                 </p>
               ) : null}
 
