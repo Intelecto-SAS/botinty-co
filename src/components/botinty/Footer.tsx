@@ -35,22 +35,6 @@ export function Footer() {
           </nav>
 
           <div>
-            <h2 className="text-xs font-semibold tracking-[0.16em] uppercase">Legal</h2>
-            <ul className="mt-4 space-y-2.5">
-              {contacto.legales.map((l) => (
-                <li key={l.label}>
-                  <a
-                    href={l.href}
-                    className="text-muted-foreground hover:text-foreground text-sm transition-colors"
-                  >
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
             <h2 className="text-xs font-semibold tracking-[0.16em] uppercase">Contacto</h2>
             <ul className="text-muted-foreground mt-4 space-y-2.5 text-sm">
               <li>

@@ -518,17 +518,7 @@ export const formulario = {
 };
 
 export const contacto = {
-  correo: "contacto@botinty.co",
-  telefono: "+57 (60) 000 0000",
+  correo: "mercadeo@intelecto.co",
+  telefono: "+57 (314) 794 3431",
   ciudad: "Colombia",
-  redes: [
-    { label: "LinkedIn", href: "#" },
-    { label: "YouTube", href: "#" },
-    { label: "X", href: "#" },
-  ],
-  legales: [
-    { label: "Política de privacidad", href: "#" },
-    { label: "Tratamiento de datos", href: "#" },
-    { label: "Términos de uso", href: "#" },
-  ],
 };
