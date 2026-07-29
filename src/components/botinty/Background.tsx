@@ -12,6 +12,23 @@ export function Background() {
     { x: 70, y: 84 },
   ];
 
+  const curvaEntre = (a: { x: number; y: number }, b: { x: number; y: number }, i: number) => {
+    const mx = (a.x + b.x) / 2;
+    const my = (a.y + b.y) / 2;
+    const dx = b.x - a.x;
+    const dy = b.y - a.y;
+    const curva = i % 2 === 0 ? 1 : -1;
+    const amplitud = 5 + (i % 3) * 2;
+    const c1x = mx - dx * 0.25 + dy * 0.22 * curva;
+    const c1y = my - dy * 0.25 - dx * 0.18 * curva;
+    const c2x = mx + dx * 0.25 + dy * 0.14 * curva;
+    const c2y = my + dy * 0.25 - dx * 0.12 * curva;
+    const warpX = (dy > 0 ? 1 : -1) * amplitud * 0.22;
+    const warpY = (dx > 0 ? -1 : 1) * amplitud * 0.22;
+
+    return `M ${a.x} ${a.y} C ${c1x + warpX} ${c1y + warpY}, ${c2x - warpX} ${c2y - warpY}, ${b.x} ${b.y}`;
+  };
+
   return (
     <div aria-hidden="true" className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
       <div className="mesh-bg animate-drift absolute inset-0 opacity-80" />
@@ -26,15 +43,14 @@ export function Background() {
         {nodos.map((n, i) => {
           const next = nodos[(i + 1) % nodos.length];
           return (
-            <line
+            <path
               key={i}
-              x1={n.x}
-              y1={n.y}
-              x2={next.x}
-              y2={next.y}
+              d={curvaEntre(n, next, i)}
               stroke="url(#bg-line)"
               strokeWidth="0.08"
               strokeDasharray="2 3"
+              fill="none"
+              strokeLinecap="round"
               style={{ animation: `dash-flow ${16 + i * 2}s linear infinite` }}
             />
           );
