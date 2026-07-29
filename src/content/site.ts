@@ -428,14 +428,13 @@ export const integraciones = {
     { nombre: "Sistemas de nómina", visible: true },
     { nombre: "Mesas de servicio", visible: true },
     { nombre: "Bases de conocimiento", visible: true },
-    { nombre: "Intranets", visible: true },
     { nombre: "APIs empresariales", visible: true },
     { nombre: "Plataformas internas", visible: true },
   ],
 };
 
 export const seguridad = {
-  titulo: "Inteligencia artificial alineada con las reglas de tu empresa.",
+  titulo: "Chatbot alineado con las reglas de tu empresa.",
   items: [
     { titulo: "Acceso controlado", texto: "La información disponible depende de los permisos definidos por la organización." },
     { titulo: "Respuestas por perfil", texto: "Cada colaborador recibe información acorde con su rol y su área." },
@@ -443,7 +442,6 @@ export const seguridad = {
     { titulo: "Registro de solicitudes", texto: "Cada interacción y trámite queda registrado para su seguimiento." },
     { titulo: "Información sensible", texto: "El tratamiento de datos se define junto con las áreas responsables." },
     { titulo: "Integraciones seguras", texto: "Las conexiones se habilitan bajo los mecanismos que autorice la empresa." },
-    { titulo: "Control editorial", texto: "La organización decide qué documentos y respuestas puede entregar Bot Inty." },
   ],
 };
 
