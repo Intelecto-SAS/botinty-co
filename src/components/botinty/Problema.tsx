@@ -8,7 +8,7 @@ const iconosCaos = [
   { Icon: MessageSquare, label: "Chats" },
   { Icon: Phone, label: "Llamadas" },
   { Icon: FileWarning, label: "Formularios" },
-  { Icon: Clock, label: "Esperas" },
+  { Icon: Clock, label: "Mesa de ayuda" },
 ];
 
 export function Problema() {
@@ -72,14 +72,12 @@ export function Problema() {
                 </li>
               ))}
             </ul>
+
+            <p className="text-gradient mt-8 text-lg font-bold text-balance sm:text-xl">
+              {problema.cierre}
+            </p>
           </Reveal>
         </div>
-
-        <Reveal delay={160}>
-          <p className="text-gradient mt-12 text-center text-2xl font-bold text-balance sm:text-3xl">
-            {problema.cierre}
-          </p>
-        </Reveal>
       </div>
     </section>
   );

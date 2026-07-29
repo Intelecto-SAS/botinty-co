@@ -103,7 +103,7 @@ export const problema = {
   titulo: "Tus colaboradores no deberían perder tiempo buscando respuestas.",
   antes: [
     "Información distribuida en correos, carpetas y plataformas.",
-    "Solicitudes repetitivas atendidas manualmente.",
+    "Solicitudes a la mesa de ayuda repetitivas.",
     "Equipos internos saturados.",
     "Tiempos de respuesta prolongados.",
     "Empleados que no saben dónde iniciar un trámite.",
@@ -118,6 +118,8 @@ export const problema = {
     "Trámites con pasos claros desde el primer mensaje.",
     "Procesos conectados de extremo a extremo.",
     "Trazabilidad de cada solicitud interna.",
+    "Acceso desde WhatsApp o Teams.",
+    "Control de interacción y trazabilidad de cada solicitud.",
   ],
   cierre: "Bot Inty convierte procesos complejos en conversaciones simples.",
 };
