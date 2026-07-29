@@ -111,6 +111,7 @@ export const problema = {
     "Poca visibilidad sobre las solicitudes internas.",
   ],
   despues: [
+    "Creación automática de tickets en mesa de servicio.",
     "Una conversación como punto único de entrada.",
     "Solicitudes iniciadas y guiadas automáticamente.",
     "Equipos enfocados en casos que exigen criterio.",
