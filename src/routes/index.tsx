@@ -15,9 +15,9 @@ import { Problema } from "@/components/botinty/Problema";
 import { Seguridad } from "@/components/botinty/Seguridad";
 import { faq } from "@/content/site";
 
-const TITULO = "Bot Inty | Inteligencia artificial para tus procesos internos";
+const TITULO = "Bot Inty |  ChatBot para tus procesos internos";
 const DESCRIPCION =
-  "Automatiza solicitudes, entrega documentos y responde las preguntas de tus colaboradores con Bot Inty, el asistente empresarial de inteligencia artificial.";
+  "Automatiza solicitudes, entrega documentos y responde las preguntas de tus colaboradores con Bot Inty, el asistente empresarial.";
 
 export const Route = createFileRoute("/")({
   head: () => ({

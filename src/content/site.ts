@@ -32,7 +32,7 @@ export const hero = {
   tituloDestacado: "en una sola conversación.",
   // Alternativa aprobada: "La forma más inteligente de atender a tus empleados."
   apoyo:
-    "Bot Inty conecta a tus colaboradores con la información, los documentos y los procesos internos de tu empresa. Resuelve solicitudes, automatiza tareas y entrega respuestas inmediatas mediante inteligencia artificial.",
+    "Bot Inty conecta a tus colaboradores con la información, los documentos y los procesos internos de tu empresa. Resuelve solicitudes, automatiza tareas y entrega respuestas inmediatas.",
   ctaPrimario: { label: "Solicitar una demo", href: "#demo" },
   ctaSecundario: { label: "Ver casos de uso", href: "#casos-de-uso" },
   nota: "Menos tareas repetitivas. Más tiempo para crear valor.",
@@ -448,7 +448,7 @@ export const seguridad = {
 export const faq = [
   {
     q: "¿Qué es Bot Inty?",
-    a: "Es un asistente empresarial de inteligencia artificial conversacional que permite a los colaboradores resolver dudas, consultar información y ejecutar procesos internos en lenguaje natural.",
+    a: "Es un asistente empresarial conversacional que permite a los colaboradores resolver dudas, consultar información y ejecutar procesos internos en lenguaje natural.",
   },
   {
     q: "¿Qué tipo de procesos puede automatizar?",

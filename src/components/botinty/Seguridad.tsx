@@ -7,7 +7,7 @@ export function Seguridad() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           eyebrow="Seguridad y control"
-          title="Inteligencia artificial alineada con las reglas de tu empresa."
+          title="ChatBot alineada con las reglas de tu empresa."
           highlight="con las reglas de tu empresa."
           description="La organización define qué información existe, quién puede verla y qué puede hacer Bot Inty con ella."
         />
