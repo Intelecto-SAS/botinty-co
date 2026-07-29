@@ -3,14 +3,11 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Background } from "@/components/botinty/Background";
 import { Beneficios } from "@/components/botinty/Beneficios";
 import { CasosDeUso } from "@/components/botinty/CasosDeUso";
-import { ComoFunciona } from "@/components/botinty/ComoFunciona";
 import { CtaFinal } from "@/components/botinty/CtaFinal";
-import { DemoInteractiva } from "@/components/botinty/DemoInteractiva";
 import { Faq } from "@/components/botinty/Faq";
 import { FloatingCta } from "@/components/botinty/FloatingCta";
 import { Footer } from "@/components/botinty/Footer";
 import { Formulario } from "@/components/botinty/Formulario";
-import { Funcionalidades } from "@/components/botinty/Funcionalidades";
 import { Hero } from "@/components/botinty/Hero";
 import { Integraciones } from "@/components/botinty/Integraciones";
 import { Navbar } from "@/components/botinty/Navbar";
@@ -80,9 +77,6 @@ function Index() {
       <main>
         <Hero />
         <Problema />
-        <DemoInteractiva />
-        <Funcionalidades />
-        <ComoFunciona />
         <CasosDeUso />
         <Beneficios />
         <Integraciones />

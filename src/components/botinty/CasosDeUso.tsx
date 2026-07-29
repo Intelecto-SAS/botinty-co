@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { Check } from "lucide-react";
 import { casosDeUso } from "@/content/site";
+import { cn } from "@/lib/utils";
+import { Check } from "lucide-react";
+import { useState } from "react";
 import { ChatSimulator } from "./ChatSimulator";
 import { Reveal, SectionHeading } from "./primitives";
-import { cn } from "@/lib/utils";
 
 /** Ilustración abstracta por área (sin fotografías ni robots genéricos). */
 function Abstracta({ index }: { index: number }) {
@@ -38,7 +38,7 @@ export function CasosDeUso() {
   const caso = casosDeUso[activo];
 
   return (
-    <section id="casos-de-uso" className="px-4 py-20 sm:px-6 lg:py-28">
+    <section id="casos-de-uso" className="px-4 py-14 sm:px-6 lg:py-20">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           eyebrow="Casos de uso"

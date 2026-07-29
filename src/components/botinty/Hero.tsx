@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { conversacionHero, hero } from "@/content/site";
+import { cn } from "@/lib/utils";
 import { ArrowRight, Play } from "lucide-react";
-import { hero, conversacionHero } from "@/content/site";
+import { useEffect, useState } from "react";
 import { ChatSimulator } from "./ChatSimulator";
 import { Eyebrow, Reveal } from "./primitives";
-import { cn } from "@/lib/utils";
 
 export function Hero() {
   const [activo, setActivo] = useState(0);
@@ -18,7 +18,7 @@ export function Hero() {
   const conv = conversacionHero[activo];
 
   return (
-    <section id="inicio" className="relative px-4 pt-32 pb-16 sm:px-6 sm:pt-40 lg:pb-28">
+    <section id="inicio" className="relative px-4 pt-28 pb-12 sm:px-6 sm:pt-36 lg:pb-20">
       <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
         <div className="flex flex-col items-start gap-6">
           <Reveal>

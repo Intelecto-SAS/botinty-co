@@ -3,7 +3,7 @@ import { Counter, Reveal, SectionHeading, TiltCard } from "./primitives";
 
 export function Beneficios() {
   return (
-    <section id="resultados" className="px-4 py-20 sm:px-6 lg:py-28">
+    <section id="resultados" className="px-4 py-14 sm:px-6 lg:py-20">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           eyebrow="Beneficios"

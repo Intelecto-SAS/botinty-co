@@ -3,7 +3,7 @@ import { Reveal, SectionHeading } from "./primitives";
 
 export function Seguridad() {
   return (
-    <section className="px-4 py-20 sm:px-6 lg:py-28">
+    <section className="px-4 py-14 sm:px-6 lg:py-20">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           eyebrow="Seguridad y control"

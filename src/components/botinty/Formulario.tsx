@@ -180,7 +180,7 @@ export function Formulario() {
   }
 
   return (
-    <section id="demo" className="px-4 py-20 sm:px-6 lg:py-28">
+    <section id="demo" className="px-4 py-14 sm:px-6 lg:py-20">
       <div className="mx-auto max-w-4xl">
         <SectionHeading
           eyebrow="Solicita una demo"

@@ -5,7 +5,7 @@ export function Integraciones() {
   const visibles = integraciones.items.filter((i) => i.visible);
 
   return (
-    <section id="integraciones" className="px-4 py-20 sm:px-6 lg:py-28">
+    <section id="integraciones" className="px-4 py-14 sm:px-6 lg:py-20">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           eyebrow="Integraciones"

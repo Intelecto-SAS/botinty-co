@@ -1,14 +1,14 @@
-import { useState } from "react";
-import { ChevronDown } from "lucide-react";
 import { faq } from "@/content/site";
-import { Reveal, SectionHeading } from "./primitives";
 import { cn } from "@/lib/utils";
+import { ChevronDown } from "lucide-react";
+import { useState } from "react";
+import { Reveal, SectionHeading } from "./primitives";
 
 export function Faq() {
   const [abierto, setAbierto] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="px-4 py-20 sm:px-6 lg:py-28">
+    <section id="faq" className="px-4 py-14 sm:px-6 lg:py-20">
       <div className="mx-auto max-w-3xl">
         <SectionHeading
           eyebrow="Preguntas frecuentes"

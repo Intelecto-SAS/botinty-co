@@ -1,5 +1,5 @@
-import { Mail, FolderOpen, MessageSquare, Phone, FileWarning, Clock } from "lucide-react";
 import { problema } from "@/content/site";
+import { Clock, FileWarning, FolderOpen, Mail, MessageSquare, Phone } from "lucide-react";
 import { Reveal, SectionHeading } from "./primitives";
 
 const iconosCaos = [
@@ -13,7 +13,7 @@ const iconosCaos = [
 
 export function Problema() {
   return (
-    <section id="soluciones" className="px-4 py-20 sm:px-6 lg:py-28">
+    <section id="soluciones" className="px-4 py-14 sm:px-6 lg:py-20">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           eyebrow="El punto de partida"

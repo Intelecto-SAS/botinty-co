@@ -20,7 +20,6 @@ export const brand = {
 
 export const nav = [
   { label: "Soluciones", href: "#soluciones" },
-  { label: "Funcionalidades", href: "#funcionalidades" },
   { label: "Casos de uso", href: "#casos-de-uso" },
   { label: "Resultados", href: "#resultados" },
   { label: "Integraciones", href: "#integraciones" },
@@ -35,7 +34,7 @@ export const hero = {
   apoyo:
     "Bot Inty conecta a tus colaboradores con la información, los documentos y los procesos internos de tu empresa. Resuelve solicitudes, automatiza tareas y entrega respuestas inmediatas mediante inteligencia artificial.",
   ctaPrimario: { label: "Solicitar una demo", href: "#demo" },
-  ctaSecundario: { label: "Ver cómo funciona", href: "#como-funciona" },
+  ctaSecundario: { label: "Ver casos de uso", href: "#casos-de-uso" },
   nota: "Menos tareas repetitivas. Más tiempo para crear valor.",
   chips: ["Nómina", "Talento humano", "Soporte", "Documentos", "Procesos"],
 };
