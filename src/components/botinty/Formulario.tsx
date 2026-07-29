@@ -169,8 +169,9 @@ export function Formulario() {
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (estado === "enviando") return; // protección contra envíos repetidos
+    const form = e.currentTarget;
 
-    const fd = new FormData(e.currentTarget);
+    const fd = new FormData(form);
     const raw = {
       nombre: String(fd.get("nombre") ?? ""),
       apellido: String(fd.get("apellido") ?? ""),
@@ -203,7 +204,7 @@ export function Formulario() {
     setEstado("enviando");
     try {
       await enviarSolicitud(parsed.data);
-      e.currentTarget.reset();
+      form.reset();
       setErrores({});
       setMensajeError(null);
       setEstado("ok");
